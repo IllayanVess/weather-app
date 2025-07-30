@@ -1,0 +1,185 @@
+/* Set global styles for the entire page */
+body {
+    font-family: 'Arial', sans-serif; /* Use Arial font for all text */
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* Gradient background from light blue to light purple */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    min-height: 100vh; /* Minimum height = full viewport height */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+/* Container for the entire weather app */
+.weather-app {
+    background-color: white; /* White background */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Soft drop shadow */
+    padding: 30px; /* Internal spacing */
+    width: 90%; /* Take 90% of parent width */
+    max-width: 800px; /* Maximum width limit */
+    margin: 20px; /* External spacing */
+}
+
+/* Main heading style */
+h1 {
+    color: #333; /* Dark gray text color */
+    text-align: center; /* Center-align text */
+    margin-bottom: 30px; /* Space below heading */
+}
+
+/* Container for search elements */
+.search-container {
+    display: flex; /* Use flexbox layout */
+    gap: 10px; /* Space between child elements */
+    margin-bottom: 20px; /* Space below container */
+}
+
+/* City text input field */
+#city-input {
+    flex: 1; /* Grow to fill available space */
+    padding: 12px; /* Internal spacing */
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 8px; /* Slightly rounded corners */
+    font-size: 16px; /* Medium text size */
+}
+
+/* Button styles (search/location buttons) */
+button {
+    padding: 12px 20px; /* Vertical and horizontal spacing */
+    background-color: #4a6bff; /* Blue background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Show pointer cursor on hover */
+    font-size: 16px; /* Medium text size */
+    transition: background-color 0.3s; /* Smooth color transition */
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #3a5bef; /* Darker blue on hover */
+}
+
+/* Main weather display area */
+.weather-display {
+    margin-top: 20px; /* Space above the section */
+}
+
+/* Current weather section */
+.current-weather {
+    text-align: center; /* Center-align content */
+    padding: 20px; /* Internal spacing */
+    background-color: #f8f9fa; /* Light gray background */
+    border-radius: 10px; /* Rounded corners */
+    margin-bottom: 20px; /* Space below section */
+}
+
+/* Container for main weather info */
+.weather-main {
+    display: flex; /* Use flexbox layout */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    gap: 20px; /* Space between icon and temperature */
+    margin: 15px 0; /* Vertical spacing */
+}
+
+/* Weather icon image */
+#weather-icon {
+    width: 80px; /* Fixed width */
+    height: 80px; /* Fixed height */
+}
+
+/* Temperature display */
+#temperature {
+    font-size: 48px; /* Large text size */
+    font-weight: bold; /* Bold text */
+}
+
+/* Weather description text */
+#weather-description {
+    font-size: 20px; /* Medium-large text */
+    color: #555; /* Medium gray color */
+    text-transform: capitalize; /* Capitalize first letter */
+}
+
+/* Additional weather details (humidity/wind) */
+.weather-details {
+    display: flex; /* Use flexbox layout */
+    justify-content: space-around; /* Space items evenly */
+    margin-top: 20px; /* Space above section */
+    color: #666; /* Gray text color */
+}
+
+/* Forecast section container */
+.forecast {
+    display: flex; /* Use flexbox layout */
+    gap: 15px; /* Space between cards */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    padding: 10px 0; /* Vertical padding */
+}
+
+/* Individual forecast card */
+.forecast-card {
+    min-width: 120px; /* Minimum width */
+    background-color: #f8f9fa; /* Light gray background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px; /* Internal spacing */
+    text-align: center; /* Center-align content */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Forecast day text */
+.forecast-day {
+    font-weight: bold; /* Bold text */
+    margin-bottom: 10px; /* Space below text */
+}
+
+/* Forecast weather icon */
+.forecast-icon {
+    width: 50px; /* Fixed width */
+    height: 50px; /* Fixed height */
+    margin: 5px auto; /* Center with top/bottom margin */
+}
+
+/* Temperature container in forecast */
+.forecast-temp {
+    display: flex; /* Use flexbox layout */
+    justify-content: space-between; /* Space items apart */
+    margin-top: 10px; /* Space above element */
+}
+
+/* High temperature style */
+.high {
+    color: #ff6b6b; /* Red color */
+}
+
+/* Low temperature style */
+.low {
+    color: #4dabf7; /* Blue color */
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 600px) {
+    /* Stack search elements vertically */
+    .search-container {
+        flex-direction: column;
+    }
+    
+    /* Stack weather details vertically */
+    .weather-details {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    /* Stack forecast cards vertically */
+    .forecast {
+        flex-direction: column;
+    }
+    
+    /* Make forecast cards full-width */
+    .forecast-card {
+        width: 100%;
+    }
+}
+
