@@ -2,7 +2,7 @@
   "name": "practice",
   "version": "1.0.0",
   "description": "Somewhere to practice\r This is arepository to practise things I learn at https://www.freecodecamp.org/.",
-  "main": "server.js"
+  "main": "server.js",
   "start": "node server.js",  // for render
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
