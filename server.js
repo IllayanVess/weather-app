@@ -1,19 +1,29 @@
 // Load environment variables from .env file (for API keys, etc.)
 // require('dotenv').config(); not required for render hosting, but can be used locally
+// Serve static files from React/VanillaJS frontend
+
 
 // Import required modules
 const express = require('express'); // Web server framework
 const axios = require('axios');     // For making HTTP requests
 const path = require('path');       // For handling file paths
 const cors = require('cors');       // To allow cross-origin requests (frontend can call backend)
+const compression = require('compression');
 
 // Create an Express app
 const app = express();
-const PORT = process.env.PORT || 3000; // Use port from .env or default to 3000
+app.use(compression());
 
 // Middleware
 app.use(cors()); // Enable CORS so browser can access API
-app.use(express.static(path.join(__dirname, 'public/'))); // Serve static files (HTML, CSS, JS) from public directory
+app.use(express.static(path.join(__dirname, 'public'), {
+  maxAge: '1d', // Cache static assets
+  setHeaders: (res, path) => {
+    if (path.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'no-cache');
+    }
+  }
+})); 
 
 // Weather Endpoint - handles requests for current weather
 app.get('/api/weather', async (req, res) => {
@@ -70,9 +80,20 @@ app.get('/api/forecast', async (req, res) => {
     });
   }
 });
+// This handles client-side routing for SPAs:
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 
 // Start Server - listen for requests
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`API Test: http://localhost:${PORT}/api/weather?city=Paris`);
+const server = app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
+  console.log(`API Docs: https://your-render-url.onrender.com/api/weather?city=Paris`);
+});
+
+// Add production error handling
+process.on('unhandledRejection', (err) => {
+  console.error('Unhandled Rejection:', err);
+  server.close(() => process.exit(1));
 });
